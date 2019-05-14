@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
+
 use App;
 use App\Media;
 use App\Author;
@@ -24,12 +24,6 @@ class MediaController extends Controller
 		]);
 	}
 
-
-=======
-
-class MediaController extends Controller
-{
->>>>>>> 2c0946d6ea953d134db9cea5b060b939c4ff9b68
 	/**
 	 * @param Request $request
 	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector

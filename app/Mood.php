@@ -15,13 +15,10 @@ class Mood extends Model
 	{
 		return $this->hasMany('App\Playlist');
 	}
-<<<<<<< HEAD
 
 	public static function getForCheckboxes()
 	{
 		return self::orderBy('name')->select(['name', 'id'])->get();
 	}
 
-=======
->>>>>>> 2c0946d6ea953d134db9cea5b060b939c4ff9b68
 }

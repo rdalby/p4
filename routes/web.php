@@ -17,12 +17,12 @@ Route::post('/media/media-process', 'MediaController@mediaProcess');
 
 //This calls the media controller and displays the results page
 Route::get('/media', 'MediaController@mediaRequest');
-<<<<<<< HEAD
+
 Route::get('/media/create', 'MediaController@create');
 Route::post('/media', 'MediaController@store');
-=======
 
->>>>>>> 2c0946d6ea953d134db9cea5b060b939c4ff9b68
+
+
 
 
 //This view route will return the welcome view
