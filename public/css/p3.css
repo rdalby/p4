@@ -1,0 +1,178 @@
+.logo{
+    border: 5px solid white;
+    height:150px;
+
+}
+
+
+
+/* box sizing: http://www.paulirish.com/2012/box-sizing-border-box-ftw */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%; /* http://snook.ca/archives/html_and_css/font-size-with-rem */
+    color: white;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    /* sticky footer */
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Default font-size */
+    font-size: 1.6rem;
+
+    /* sticky footer - match footer height */
+    margin-bottom: 60px;
+    background: black;
+
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+}
+
+img#comicImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%
+}
+
+fieldset {
+    align-content: center;
+}
+
+div {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+}
+
+section#main {
+    max-width: 600px;
+    width: 100%;
+    margin: 20px;
+    text-align: center;
+}
+
+
+
+footer {
+    text-align: center;
+    background-color: #eee;
+
+    /* sticky footer */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px; /* Vertically center the text */
+}
+
+h1 {
+    color: silver;
+}
+
+p {
+    color: white;
+}
+
+/*----------------------------------------------------
+Bootstrap overrides
+-----------------------------------------------------*/
+a:link, a:visited, a:active, a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    font-size: 1.5rem;
+}
+
+.alert {
+    margin-top: 20px;
+}
+
+.errors ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+/*----------------------------------------------------
+Forms
+-----------------------------------------------------*/
+form {
+    background: silver;
+    margin: 0 auto;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    font-size: 1.4rem;
+}
+
+input[type='dropdown'], input[type='checkbox'] {
+    margin-right: 0;
+    /* Next two lines prevent misalignment with text */
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+fieldset {
+    margin-bottom: 20px;
+    background: silver;
+}
+
+input[type=text] {
+    display: block;
+    font-family: Consolas, Courier, monospace;
+    margin: 0 auto;
+}
+
+.instructions {
+    color: red;
+    font-size: 10px;
+    margin-bottom: 10px;
+    border: 1px solid silver;
+    background: silver;
+}
+
+/*----------------------------------------------------
+media
+-----------------------------------------------------*/
+input[name=userName] {
+    width: 300px;
+    margin: 0 auto;
+}
+
+ul {
+    list-style-type: inline;
+    padding: 0;
+}
+
+li {
+    border: 1px solid silver;
+    margin: 0 0 15px 0;
+    padding: 10px;
+    background: silver;
+}
+
+
+.title {
+    font-weight: bold;
+}
+
+.author {
+    font-style: italic;
+}
