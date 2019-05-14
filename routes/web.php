@@ -11,12 +11,20 @@
 |
 */
 
+
+//This actually calls the method to process the form
+Route::post('/media/media-process', 'MediaController@mediaProcess');
+
+//This calls the media controller and displays the results page
+Route::get('/media', 'MediaController@mediaRequest');
+
+
+
+//This view route will return the welcome view
+Route::view('/', 'welcome');
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
-
-
-
 
 
 Route::get('/debug', function () {
