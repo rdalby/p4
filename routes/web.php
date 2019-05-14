@@ -22,9 +22,23 @@ Route::get('/media', 'MediaController@mediaRequest');
 
 //This view route will return the welcome view
 Route::view('/', 'welcome');
-Route::get('/', function () {
-	return view('welcome');
+
+//Route::get('/', function () {
+//	return view('welcome');
+//});
+
+Route::get('/show-login-status', function () {
+	$user = Auth::user();
+
+	if ($user) {
+		dump('You are logged in.', $user->toArray());
+	} else {
+		dump('You are not logged in.');
+	}
+
+	return;
 });
+
 
 
 Route::get('/debug', function () {
@@ -52,3 +66,6 @@ Route::get('/debug', function () {
 
 	dump($debug);
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

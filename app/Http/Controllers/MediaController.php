@@ -56,20 +56,25 @@ class MediaController extends Controller
 
 
 		# must have mood selected to even try to find anything
-		if ($mood) {
-			if ($bookCheck) {
-				$mediaResults = self::mediaDecode('book', $mood, $mediaResults);
-			}
-			if ($comicCheck) {
-				$mediaResults = self::mediaDecode('comic', $mood, $mediaResults);
-			}
-			if ($videoCheck) {
-				$mediaResults = self::mediaDecode('video', $mood, $mediaResults);
-			}
-			if ($musicCheck) {
-				$mediaResults = self::mediaDecode('music', $mood, $mediaResults);
-			}
-		}
+	#	if ($mood) {
+	#		if ($bookCheck) {
+	#			$mediaResults = self::mediaDecode('book', $mood, $mediaResults);
+	#		}
+	#		if ($comicCheck) {
+	#			$mediaResults = self::mediaDecode('comic', $mood, $mediaResults);
+	#		}
+	#		if ($videoCheck) {
+	#			$mediaResults = self::mediaDecode('video', $mood, $mediaResults);
+	#		}
+	#		if ($musicCheck) {
+	#			$mediaResults = self::mediaDecode('music', $mood, $mediaResults);
+	#		}
+	#	}
+
+		$media = Media::first();
+		$author = $media->author;
+
+
 
 		# Redirect back to the media page with the results if any
 

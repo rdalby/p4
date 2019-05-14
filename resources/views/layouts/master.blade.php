@@ -3,13 +3,13 @@
 <head>
     <title>@yield('title')</title>
     <meta charset='utf-8'>
-    <link href={{ asset('/css/p3.css') }} rel='stylesheet'>
+    <link href={{ asset('/css/p4.css') }} rel='stylesheet'>
 
     @yield('head')
 </head>
 <body>
 <header>
-    <a href='/'><img src={{ asset('images/p3-logo.jpg') }} id='logo' alt='p3 logo' class='logo'></a>
+    <a href='/'><img src={{ asset('images/p4-logo.jpg') }} id='logo' alt='p4 logo' class='logo'></a>
 </header>
 
 <section>
@@ -24,7 +24,7 @@
 
 <footer>
     &copy; {{ date('Y') }}
-    <a href='https://github.com/rdalby/p3'>View this project on Github</a>
+    <a href='https://github.com/rdalby/p4'>View this project on Github</a>
 </footer>
 </body>
 </html>
