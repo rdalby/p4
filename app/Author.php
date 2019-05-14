@@ -10,6 +10,7 @@ class Author extends Model
 	{
 		return $this->hasMany('App\Media');
 	}
+<<<<<<< HEAD
 
 	/**
 	 * Helper method to get all the authors for displaying in a dropdown
@@ -23,4 +24,6 @@ class Author extends Model
 	public function getFullName() {
 		return $this->first_name.' '.$this->last_name;
 	}
+=======
+>>>>>>> 2c0946d6ea953d134db9cea5b060b939c4ff9b68
 }

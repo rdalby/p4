@@ -25,6 +25,7 @@
         <h3 class="w3-padding-64"><a href='/'><img src={{ asset('images/p4-logo-small.jpg') }} id='logo' alt='p4 logo' class='logo'></a></h3>
     </div>
     <div class="w3-bar-block">
+<<<<<<< HEAD
 
             @foreach(config('app.nav') as $link => $label)
 
@@ -32,6 +33,14 @@
 
             @endforeach
 
+=======
+        <a href="#" class="w3-bar-item w3-button w3-hover-white">Home</a>
+        <a href="#showcase"  class="w3-bar-item w3-button w3-hover-white">Search</a>
+        <a href="#services"  class="w3-bar-item w3-button w3-hover-white">Playlists</a>
+        <a href="#designers" class="w3-bar-item w3-button w3-hover-white">Create-Update</a>
+        <a href="#packages" class="w3-bar-item w3-button w3-hover-white">Accounts</a>
+        <a href="#contact" class="w3-bar-item w3-button w3-hover-white">Login</a>
+>>>>>>> 2c0946d6ea953d134db9cea5b060b939c4ff9b68
     </div>
 </nav>
 
