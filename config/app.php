@@ -2,6 +2,14 @@
 
 return [
 
+	'nav' => [
+		// URL => Link label
+		'media' => 'Media',
+		'media/search' => 'Search',
+		'media/create' => 'Add media',
+
+	],
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
