@@ -25,4 +25,19 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+	public function accounts()
+	{
+		$name = User::getName();
+
+		$email = User::getMood();
+
+		$password = User::getPassword();
+
+		return view('media.account')->with([
+			'name' => $name,
+			'email' => $email,
+			'password' => $password
+		]);
+	}
 }

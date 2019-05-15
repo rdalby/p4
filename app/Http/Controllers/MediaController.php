@@ -9,9 +9,35 @@ use App\Media;
 use App\Author;
 use App\Mood;
 use App\Type;
+use App\User;
 
 class MediaController extends Controller
 {
+	public function index()
+	{
+		# Get all the books from our library
+		$media = Media::with(['author', 'type', 'mood'])->orderBy('title')->get();
+
+		# Query on the existing collection to get our recently added books
+		$moods = Mood::get(['name']);
+
+		# Query on the existing collection to get our recently added books
+		$happyMedias = Media::with(['author', 'type', 'mood'])->where('mood_id', '=', '5')->get();
+		$sadMedias = Media::with(['author', 'type', 'mood'])->where('mood_id', '=', '2')->get();
+		$mehMedias = Media::with(['author', 'type', 'mood'])->where('mood_id', '=', '4')->get();
+		$madMedias = Media::with(['author', 'type', 'mood'])->where('mood_id', '=', '1')->get();
+		$excitedMedias = Media::with(['author', 'type', 'mood'])->where('mood_id', '=', '3')->get();
+
+		return view('media')->with([
+			'medias' => $media,
+			'moods' => $moods,
+			'happyMedias' => $happyMedias,
+		'sadMedias' => $sadMedias,
+		'mehMedias' => $mehMedias,
+		'madMedias' => $madMedias,
+		'excitedMedias' => $excitedMedias,
+		]);
+	}
 
 	public function create()
 	{
@@ -25,6 +51,20 @@ class MediaController extends Controller
 			'authors' => $authors,
 			'moods' => $moods,
 			'types' => $types
+		]);
+	}
+	public function accounts()
+	{
+		$name = (new \App\User)->getName();
+
+		$email = (new \App\User)->getEmail();
+
+		$password = (new \App\User)->getPassword();
+
+		return view('media.account')->with([
+			'name' => $name,
+			'email' => $email,
+			'password' => $password
 		]);
 	}
 

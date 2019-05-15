@@ -16,10 +16,13 @@
 Route::post('/media/search/media-process', 'MediaController@mediaProcess');
 
 //This calls the media controller and displays the results page
-Route::view('/media', 'media');
+//Route::view('/media', 'media');
 Route::view('/media/create/playlist', 'media');
+Route::view('/media/create/logoff', 'media');
 
-Route::view('/account', 'media.account');
+Route::get('/media', 'MediaController@index');
+
+Route::get('/account', 'MediaController@accounts');
 
 Route::get('/media/search', 'MediaController@search');
 

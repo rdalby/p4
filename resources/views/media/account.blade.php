@@ -11,9 +11,9 @@
 
 
     <div class='user'>
-        <p>Name: {{ $user->user->getName() }}</p>
-        <p>email: {{ $user->user->getEmail() }}</p>
+        <p>Name: {{ $name }}</p>
+        <p>email: {{ $email }}</p>
 
-        <p>password: {{ $user->user->getPassword() }}</p>
+        <p>password: {{ $password }}</p>
     </div>
 @endsection

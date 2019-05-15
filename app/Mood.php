@@ -21,4 +21,8 @@ class Mood extends Model
 		return self::orderBy('name')->select(['name', 'id'])->get();
 	}
 
+	public function getMood() {
+		return $this->mood;
+	}
+
 }

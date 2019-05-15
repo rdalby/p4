@@ -8,7 +8,8 @@ return [
 		'media/search' => 'Search',
 		'media/create' => 'Add media',
 		'media/create/playlist' => 'Playlist',
-		'media/accounts' => 'Account'
+		'account' => 'Account',
+		'media/create/logoff' => 'Logout'
 
 	],
 

@@ -15,4 +15,8 @@ class Type extends Model
 	{
 		return self::orderBy('name')->select(['name', 'id'])->get();
 	}
+
+	public function getType() {
+		return $this->type;
+	}
 }
