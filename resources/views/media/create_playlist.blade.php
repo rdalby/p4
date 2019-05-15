@@ -26,7 +26,7 @@
                     <label for='title'>Creator</label>
                 </td>
                 <td>
-                    <select multiple name='title'>
+                    <select multiple="multiple" name='title[]' id="title">
                         @foreach($titles as $title)
                             <option value='{{ $title->id }}' {{ (old('title') == $title->id) ? 'selected' : '' }}>{{ $title->title }}</option>
                         @endforeach

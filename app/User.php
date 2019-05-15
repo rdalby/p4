@@ -48,4 +48,10 @@ class User extends Authenticatable
 	public function getPassword() {
 		return $this->password;
 	}
+	public function playlist()
+	{
+		return $this->hasMany('App\Playlist');
+	}
 }
+
+

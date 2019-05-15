@@ -16,4 +16,11 @@
 
         <p>password: {{ $password }}</p>
     </div>
+
+    <div>
+        <p>Playlists:</p>
+        @foreach($playlist as $playlists)
+        <p>{{$playlists->name}}</p>
+            @endforeach
+    </div>
 @endsection

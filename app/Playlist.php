@@ -14,4 +14,9 @@ class Playlist extends Model
 		return $this->belongsTo('App\Mood');
 	}
 
+	public function user()
+	{
+		return $this->belongsTo('App\User');
+	}
+
 }

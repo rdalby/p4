@@ -86,18 +86,21 @@ class MediaController extends Controller
 		]);
 	}
 
-	public function accounts()
+	public function accounts(Request $request)
 	{
-		$name = (new \App\User)->getName();
+		$user = $request->user();
+		$playlists = $user->playlist()->orderBy('name')->get();
+		//$name = (new \App\User)->getName();
 
-		$email = (new \App\User)->getEmail();
+		//$email = (new \App\User)->getEmail();
 
-		$password = (new \App\User)->getPassword();
+		//$password = (new \App\User)->getPassword();
 
 		return view('media.account')->with([
-			'name' => $name,
-			'email' => $email,
-			'password' => $password
+			'playlist' =>$playlists,
+			'name' => $user['name'],
+			'email' => $user['email'],
+			'password' => $user['password']
 		]);
 	}
 
@@ -273,18 +276,18 @@ class MediaController extends Controller
 	}
 
 	public function createPlaylist(Request $request){
-
+		//$user =Auth::user();
 		$mood = $request->input('mood');
 		$title= $request->input ('title');
-
+$title['title'] = $title;
 
 		$playlist = new Playlist();
 		$playlist->name = $request->input('name');
 		$playlist->mood()->associate($mood);
-		$playlist->user_id = "1";
+		$playlist->user_id = $request->user()->id;
 		$playlist->save();
 
-		$playlist->media()->sync($request->title);
+			$playlist->media()->sync($request->input('title'));
 
 		return redirect('/media/create/playlist')->with([
 			'alert' => 'Your playlist was created'
