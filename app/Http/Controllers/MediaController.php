@@ -54,6 +54,22 @@ class MediaController extends Controller
 		]);
 	}
 
+	public function createPlaylistStart()
+	{
+		$authors = Author::getForDropdown();
+		$titles = Media::getForDropDown();
+		$moods = Mood::getForCheckboxes();
+
+		$types = Type::getForCheckboxes();
+
+		return view('media.create_playlist')->with([
+			'authors' => $authors,
+			'titles' => $titles,
+			'moods' => $moods,
+			'types' => $types
+		]);
+	}
+
 	public function show($id)
 	{
 		$playlist = Playlist::with('title', 'user')->get();
@@ -251,6 +267,25 @@ class MediaController extends Controller
 		$media->save();
 
 		return redirect('/media/create')->with([
+			'alert' => 'Your book was added.'
+		]);
+	}
+
+	public function createPlaylist(Request $request){
+		$author = $request->input('author_id');
+		$mood = $request->input('mood');
+		$type = $request->input('type');
+
+		$media = new Media();
+		$media->title = $request->input('title');
+		$media->author()->associate($author);
+		$media->mood()->associate($mood);
+		$media->cover = $request->input('cover');
+		$media->url = $request->input('url');
+		$media->type()->associate($type);
+		$media->save();
+
+		return redirect('/media/create/playlist')->with([
 			'alert' => 'Your book was added.'
 		]);
 	}

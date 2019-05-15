@@ -17,7 +17,7 @@ Route::post('/media/search/media-process', 'MediaController@mediaProcess');
 
 //This calls the media controller and displays the results page
 //Route::view('/media', 'media');
-Route::view('/media/create/playlist', 'media');
+//Route::get('/media/create/playlist', 'media');
 Route::view('/media/create/logoff', 'media');
 
 Route::get('/media', 'MediaController@index');
@@ -29,6 +29,9 @@ Route::get('/media/search', 'MediaController@search');
 
 Route::get('/media/create', 'MediaController@create');
 Route::post('/media/create', 'MediaController@createMedia');
+
+Route::get('/media/create/playlist', 'MediaController@createPlaylistStart');
+Route::post('/media/create/playlist', 'MediaController@createPlaylist');
 
 
 

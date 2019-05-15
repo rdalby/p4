@@ -25,4 +25,8 @@ class Media extends Model
 	public function user(){
 		return $this->belongsTo('App\User');
 	}
+
+	public static function getForDropDown(){
+		return self::orderBy('title')->select(['title', 'id'])->get();
+	}
 }
