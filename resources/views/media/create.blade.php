@@ -8,13 +8,14 @@
 
     <h1>Add media</h1>
 
-    <form method='POST' action='/media'>
-        <div class='details'>* Required fields</div>
+    <form method='POST' action='/media/create'>
+        <div class='details'>* All Fields Required fields</div>
         {{ csrf_field() }}
+
         <table>
             <tr>
                 <td>
-        <label for='title'>* Title</label>
+        <label for='title'>Title</label>
                 </td>
                 <td>
         <input type='text' name='title' id='title' value='{{ old('title') }}'>
@@ -22,7 +23,7 @@
             </tr>
             <tr>
                 <td>
-        <label for='author_id'>* Author</label>
+        <label for='author_id'>Creator</label>
                 </td>
                 <td>
                 <select name='author_id'>
@@ -35,26 +36,31 @@
             </tr>
             <tr>
                 <td>
-        <label for='published_year'>* Published Year (YYYY)</label>
+        <label for='cover_url'>Cover</label>
                 </td>
                 <td>
-        <input type='text' name='published_year' id='published_year' value='{{ old('published_year') }}'>
-                </td>
-            </tr>
-            <tr>
-                <td>
-        <label for='cover_url'>* Cover URL</label>
-                </td>
-                <td>
-        <input type='text' name='cover_url' id='cover_url' value='{{ old('cover_url', 'http://') }}'>
+        <input type='text' name='cover' id='cover' value='{{ old('cover', 'http://') }}'>
                 </td>
             </tr>
             <tr>
                 <td>
-        <label for='purchase_url'>* Purchase URL </label>
+                    <label for='url'>URL</label>
                 </td>
                 <td>
-        <input type='text' name='purchase_url' id='purchase_url' value='{{ old('purchase_url', 'http://') }}'>
+                    <input type='text' name='url' id='url' value='{{ old('url', 'http://') }}'>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Type</label>
+                </td>
+                <td>
+                    <select name="type">
+                        @foreach($types as $type)
+                            <option value='{{ $type->id }}' {{ (old('type') == $type->id) ? 'selected' : '' }}>{{ $type->name }}</option>
+                        @endforeach
+                    </select>
+
                 </td>
             </tr>
             <tr>
@@ -62,18 +68,18 @@
             <label>Mood</label>
                 </td>
                 <td>
-                        <select>
+                        <select name="mood">
                             @foreach($moods as $mood)
-                               name='moods[]'
-                            <option> {{ $mood->name }}</option>
+                                <option value='{{ $mood->id }}' {{ (old('mood') == $mood->id) ? 'selected' : '' }}>{{ $mood->name }}</option>
                             @endforeach
                         </select>
 
                 </td>
             </tr>
 
-    </table>
-        <input type='submit' class='btn btn-primary' value='Add book'>
+                </table>
+<br>
+        <input type='submit' class='btn btn-primary' value='Add media'>
     </form>
 
     @if(count($errors) > 0)

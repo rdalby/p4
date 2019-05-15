@@ -18,6 +18,9 @@
 
 
 <body>
+@if(session('alert'))
+    <div class='alert'>{{ session('alert') }}</div>
+@endif
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-teal w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
     <a href="javascript:void(0)" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>

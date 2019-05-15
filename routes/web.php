@@ -13,13 +13,19 @@
 
 
 //This actually calls the method to process the form
-Route::post('/media/media-process', 'MediaController@mediaProcess');
+Route::post('/media/search/media-process', 'MediaController@mediaProcess');
 
 //This calls the media controller and displays the results page
-Route::get('/media', 'MediaController@mediaRequest');
+Route::view('/media', 'media');
+Route::view('/media/create/playlist', 'media');
+
+Route::view('/account', 'media.account');
+
+Route::get('/media/search', 'MediaController@search');
+
 
 Route::get('/media/create', 'MediaController@create');
-Route::post('/media', 'MediaController@store');
+Route::post('/media/create', 'MediaController@createMedia');
 
 
 

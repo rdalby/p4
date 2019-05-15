@@ -10,4 +10,9 @@ class Type extends Model
 	{
 		return $this->hasMany('App\Media');
 	}
+
+	public static function getForCheckboxes()
+	{
+		return self::orderBy('name')->select(['name', 'id'])->get();
+	}
 }

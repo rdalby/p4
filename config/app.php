@@ -7,6 +7,8 @@ return [
 		'media' => 'Media',
 		'media/search' => 'Search',
 		'media/create' => 'Add media',
+		'media/create/playlist' => 'Playlist',
+		'media/accounts' => 'Account'
 
 	],
 

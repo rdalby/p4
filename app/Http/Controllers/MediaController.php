@@ -8,6 +8,7 @@ use App;
 use App\Media;
 use App\Author;
 use App\Mood;
+use App\Type;
 
 class MediaController extends Controller
 {
@@ -18,9 +19,12 @@ class MediaController extends Controller
 
 		$moods = Mood::getForCheckboxes();
 
+		$types = Type::getForCheckboxes();
+
 		return view('media.create')->with([
 			'authors' => $authors,
-			'moods' => $moods
+			'moods' => $moods,
+			'types' => $types
 		]);
 	}
 
@@ -39,7 +43,7 @@ class MediaController extends Controller
 		$comicCheck = $request->session()->get('comicCheck', false);
 		$mediaResults = $request->session()->get('mediaResults', null);
 		# Work that was previously happening in the routes file is now happening here
-		return view('media')->with([
+		return view('media.search')->with([
 			'userName' => $userName,
 			'mood' => $mood,
 			'comicCheck' => $comicCheck,
@@ -96,7 +100,7 @@ class MediaController extends Controller
 
 		# Redirect back to the media page with the results if any
 
-		return redirect('/media')->with([
+		return redirect('/media.search')->with([
 			'userName' => $userName,
 			'mood' => $mood,
 			'comicCheck' => $request->has('comicCheck'),
@@ -152,5 +156,46 @@ class MediaController extends Controller
 			}
 		}
 		return $mediaResults;
+	}
+
+	public function search(Request $request)
+	{
+
+		$userName = $request->session()->get('userName', '');
+		$mood = $request->session()->get('mood', '');
+		$bookCheck = $request->session()->get('bookCheck', false);
+		$videoCheck = $request->session()->get('videoCheck', false);
+		$musicCheck = $request->session()->get('musicCheck', false);
+		$comicCheck = $request->session()->get('comicCheck', false);
+		$mediaResults = $request->session()->get('mediaResults', null);
+		# Work that was previously happening in the routes file is now happening here
+		return view('media.search')->with([
+			'userName' => $userName,
+			'mood' => $mood,
+			'comicCheck' => $comicCheck,
+			'bookCheck' => $bookCheck,
+			'videoCheck' => $videoCheck,
+			'musicCheck' => $musicCheck,
+			'mediaResults' => $mediaResults,
+		]);
+	}
+
+	public function createMedia(Request $request){
+		$author = $request->input('author_id');
+		$mood = $request->input('mood');
+		$type = $request->input('type');
+
+		$media = new Media();
+		$media->title = $request->input('title');
+		$media->author()->associate($author);
+		$media->mood()->associate($mood);
+		$media->cover = $request->input('cover');
+		$media->url = $request->input('url');
+		$media->type()->associate($type);
+		$media->save();
+
+		return redirect('/media/create')->with([
+			'alert' => 'Your book was added.'
+		]);
 	}
 }
