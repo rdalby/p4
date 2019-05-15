@@ -53,6 +53,22 @@ class MediaController extends Controller
 			'types' => $types
 		]);
 	}
+
+	public function show($id)
+	{
+		$playlist = Playlist::with('title', 'user')->get();
+		$media = Media::with('author')->find($id);
+
+		if (!$media) {
+			return redirect('/media')->with(['alert' => 'Media not found']);
+		}
+
+		return view('media.show')->with([
+			'media' => $media,
+			'playlist' => $playlist
+		]);
+	}
+
 	public function accounts()
 	{
 		$name = (new \App\User)->getName();

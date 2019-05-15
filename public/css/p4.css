@@ -17,20 +17,20 @@
 
 img {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 200px;
+    alignment: left;
+    max-height: 200px;
+    max-width: 200px;
 }
 
 img#comicImg {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 100%
+    width: 50%
 }
 
 fieldset {
-    align-content: left;
+    alignment: left;
 }
 
 div {
@@ -115,14 +115,16 @@ input[name=userName] {
 }
 
 ul {
-    list-style-type: inline;
-    padding: 0;
+    border-right: 1px solid #ffffff;
+    width:2600px;
+    display:inline;
 }
 
 li {
     border: 1px solid silver;
-    margin: 0 0 15px 0;
-    padding: 10px;
+    width:200px;
+    display: inline;
+    list-style-type: none;
 }
 
 .author {

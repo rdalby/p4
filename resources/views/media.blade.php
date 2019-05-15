@@ -17,7 +17,7 @@
     <hr>
     <div class="w3-row-padding">
     @foreach($happyMedias as $happyMedia)
-    <div class='media cf custom-control-inline'>
+    <div class='media cf custom-control-inline w3-half'>
         <ul>
             <li>
                 <a href='/media/{{ $happyMedia->id }}'><h3>{{ $happyMedia->title }}</h3></a>
@@ -26,7 +26,7 @@
         @endif
                 @if($happyMedia->type->name == 'Music')
                     <div class='cover'>
-                        <iframe width="560" height="315" src='<?= $happyMedia['cover'] ?>'
+                        <iframe width="200" height="150" src='<?= $happyMedia['url'] ?>'
                                 frameborder="0"
                                 allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen></iframe>
@@ -41,7 +41,7 @@
     </div>
     @endforeach
     </div>
-
+    <div class="w3-row-padding">
     <h1 class="w3-xxxlarge w3-text-teal"><b>Meh</b></h1>
     <hr style="width:50px;border:5px solid teal" class="w3-round">
     <hr>
@@ -57,7 +57,8 @@
         </ul>
     </div>
     @endforeach
-
+    </div>
+    <div class="w3-row-padding">
     <h1 class="w3-xxxlarge w3-text-teal"><b>Mad</b></h1>
     <hr style="width:50px;border:5px solid teal" class="w3-round">
     <hr>
@@ -73,7 +74,8 @@
         </ul>
     </div>
     @endforeach
-
+    </div>
+    <div class="w3-row-padding">
    <h1 class="w3-xxxlarge w3-text-teal"><b>Excited</b></h1>
     <hr style="width:50px;border:5px solid teal" class="w3-round">
     <hr>
@@ -89,7 +91,8 @@
         </ul>
     </div>
     @endforeach
-
+    </div>
+    <div class="w3-row-padding">
     <h1 class="w3-xxxlarge w3-text-teal"><b>Sad</b></h1>
     <hr style="width:50px;border:5px solid teal" class="w3-round">
     <hr>
@@ -105,5 +108,6 @@
         </ul>
     </div>
     @endforeach
+    </div>
 @endsection
 
