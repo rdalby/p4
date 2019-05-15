@@ -10,6 +10,7 @@ use App\Author;
 use App\Mood;
 use App\Type;
 use App\User;
+use App\Playlist;
 
 class MediaController extends Controller
 {
@@ -267,26 +268,26 @@ class MediaController extends Controller
 		$media->save();
 
 		return redirect('/media/create')->with([
-			'alert' => 'Your book was added.'
+			'alert' => 'Your media was added.'
 		]);
 	}
 
 	public function createPlaylist(Request $request){
-		$author = $request->input('author_id');
-		$mood = $request->input('mood');
-		$type = $request->input('type');
 
-		$media = new Media();
-		$media->title = $request->input('title');
-		$media->author()->associate($author);
-		$media->mood()->associate($mood);
-		$media->cover = $request->input('cover');
-		$media->url = $request->input('url');
-		$media->type()->associate($type);
-		$media->save();
+		$mood = $request->input('mood');
+		$title= $request->input ('title');
+
+
+		$playlist = new Playlist();
+		$playlist->name = $request->input('name');
+		$playlist->mood()->associate($mood);
+		$playlist->user_id = "1";
+		$playlist->save();
+
+		$playlist->media()->sync($request->title);
 
 		return redirect('/media/create/playlist')->with([
-			'alert' => 'Your book was added.'
+			'alert' => 'Your playlist was created'
 		]);
 	}
 }

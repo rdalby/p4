@@ -13,4 +13,5 @@ class Playlist extends Model
 	public function mood(){
 		return $this->belongsTo('App\Mood');
 	}
+
 }
