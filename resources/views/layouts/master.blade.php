@@ -46,23 +46,34 @@
             <div class="w3-bar-block">
                 @auth
                     <a href="{{ url('/') }}" class="w3-bar-item w3-button w3-hover-white">Home</a>
+                    @foreach(config('app.nav1') as $link => $label)
+
+                        <a href='/{{ $link }}' class="w3-bar-item w3-button w3-hover-white">{{ $label }}</a>
+
+                    @endforeach
+
+                        <form method='POST' id='logout' action='/logout'>
+                            {{ csrf_field() }}
+                            <a href='#' onClick='document.getElementById("logout").submit();' class="w3-bar-item w3-button w3-hover-white">Logout</a>
+                        </form>
+
                 @else
                     <a href="{{ route('login') }}" class="w3-bar-item w3-button w3-hover-white">Login</a>
 
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}" class="w3-bar-item w3-button w3-hover-white">Register</a>
                     @endif
-                @endauth
-            </div>
-        @endif
-            <div class="w3-bar-block">
-            @foreach(config('app.nav') as $link => $label)
+                    @foreach(config('app.nav') as $link => $label)
 
                         <a href='/{{ $link }}' class="w3-bar-item w3-button w3-hover-white">{{ $label }}</a>
 
-            @endforeach
+                    @endforeach
+                @endauth
+            </div>
+        @endif
 
-    </div>
+
+
 
 </nav>
 

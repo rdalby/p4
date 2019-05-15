@@ -18,7 +18,7 @@ return [
 		'media/create/playlist' => 'Create Playlist',
 		'media/search' => 'Search Playlists',
 		'account' => 'Account',
-		'media/create/logoff' => 'Logout'
+
 
 	],
 
