@@ -26,3 +26,24 @@
 @endsection
 
 
+
+
+
+@if($playlist)
+    <h1>Your results are below for the playlist search:
+        <em>{{ $playlist }}</em></h1>
+    @if(count($playlistResults) == 0)
+        No matches found.
+    @else
+        <fieldset>
+            <ul>
+                @foreach($playlistResults as $mood => $media)
+
+                @endforeach
+            </ul>
+        </fieldset>
+    @endif
+
+@endif
+
+

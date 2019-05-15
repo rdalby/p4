@@ -111,22 +111,15 @@ class MediaController extends Controller
 	public function mediaRequest(Request $request)
 	{
 
-		$userName = $request->session()->get('userName', '');
+		$playlistName = $request->session()->get('playlistName', '');
 		$mood = $request->session()->get('mood', '');
-		$bookCheck = $request->session()->get('bookCheck', false);
-		$videoCheck = $request->session()->get('videoCheck', false);
-		$musicCheck = $request->session()->get('musicCheck', false);
-		$comicCheck = $request->session()->get('comicCheck', false);
-		$mediaResults = $request->session()->get('mediaResults', null);
+
+		$playlistResults = $request->session()->get('playlistResults', null);
 		# Work that was previously happening in the routes file is now happening here
 		return view('media.search')->with([
-			'userName' => $userName,
+			'playlistName' => $playlistName,
 			'mood' => $mood,
-			'comicCheck' => $comicCheck,
-			'bookCheck' => $bookCheck,
-			'videoCheck' => $videoCheck,
-			'musicCheck' => $musicCheck,
-			'mediaResults' => $mediaResults,
+			'playlistResults' => $playlistResults,
 		]);
 	}
 
@@ -138,19 +131,16 @@ class MediaController extends Controller
 	public function mediaProcess(Request $request)
 	{
 		$request->validate([
-			'userName' => 'required'
+			//'userName' => 'required'
 		]);
 
 		//This array will be used for storing any results
-		$mediaResults = [];
+		$playlistResults = [];
 
 		//each perspective input criteria is set aside as a variable
-		$userName = $request->input('userName', null);
+		$playlistName = $request->input('playlistName', null);
 		$mood = $request->input('mood', null);
-		$bookCheck = $request->input('bookCheck', false);
-		$videoCheck = $request->input('videoCheck', false);
-		$musicCheck = $request->input('musicCheck', false);
-		$comicCheck = $request->input('comicCheck', false);
+
 
 
 		# must have mood selected to even try to find anything
@@ -169,21 +159,17 @@ class MediaController extends Controller
 	#		}
 	#	}
 
-		$media = Media::first();
-		$author = $media->author;
+		$playlist = Playlist::first();
+		$playlistNames = $playlist->name;
 
 
 
 		# Redirect back to the media page with the results if any
 
-		return redirect('/media.search')->with([
-			'userName' => $userName,
+		return redirect('/media/search')->with([
+			'playlistName' => $playlistName,
 			'mood' => $mood,
-			'comicCheck' => $request->has('comicCheck'),
-			'videoCheck' => $request->has('videoCheck'),
-			'bookCheck' => $request->has('bookCheck'),
-			'musicCheck' => $request->has('musicCheck'),
-			'mediaResults' => $mediaResults
+			'playlistResults' => $playlistResults
 		]);
 	}
 
@@ -234,27 +220,6 @@ class MediaController extends Controller
 		return $mediaResults;
 	}
 
-	public function search(Request $request)
-	{
-
-		$userName = $request->session()->get('userName', '');
-		$mood = $request->session()->get('mood', '');
-		$bookCheck = $request->session()->get('bookCheck', false);
-		$videoCheck = $request->session()->get('videoCheck', false);
-		$musicCheck = $request->session()->get('musicCheck', false);
-		$comicCheck = $request->session()->get('comicCheck', false);
-		$mediaResults = $request->session()->get('mediaResults', null);
-		# Work that was previously happening in the routes file is now happening here
-		return view('media.search')->with([
-			'userName' => $userName,
-			'mood' => $mood,
-			'comicCheck' => $comicCheck,
-			'bookCheck' => $bookCheck,
-			'videoCheck' => $videoCheck,
-			'musicCheck' => $musicCheck,
-			'mediaResults' => $mediaResults,
-		]);
-	}
 
 	public function createMedia(Request $request){
 		$author = $request->input('author_id');
