@@ -5,9 +5,9 @@ return [
 	'nav' => [
 		// URL => Link label
 		'media' => 'Media',
-		'media/search' => 'Search',
 		'media/create' => 'Add media',
-		'media/create/playlist' => 'Playlist',
+		'media/create/playlist' => 'Create Playlist',
+		'media/search' => 'Search Playlists',
 		'account' => 'Account',
 		'media/create/logoff' => 'Logout'
 

@@ -18,8 +18,8 @@
 img {
     display: block;
     alignment: left;
-    max-height: 200px;
-    max-width: 200px;
+   max-height: 250px;
+    max-width: 400px;
 }
 
 img#comicImg {
@@ -33,10 +33,12 @@ fieldset {
     alignment: left;
 }
 
-div {
+.div-test {
     margin-left: auto;
     margin-right: auto;
     text-align: left;
+    min-height: 500px;
+    border: 1px solid silver;
 
 }
 
