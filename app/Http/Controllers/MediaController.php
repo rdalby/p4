@@ -16,13 +16,13 @@ class MediaController extends Controller
 	public function index()
 	{
 		# Get all the books from our library
-		$media = Media::with(['author', 'type', 'mood'])->orderBy('title')->get();
+		$media = Media::with(['author'], ['type'], ['mood'])->orderBy('title')->get();
 
 		# Query on the existing collection to get our recently added books
 		$moods = Mood::get(['name']);
 
 		# Query on the existing collection to get our recently added books
-		$happyMedias = Media::with(['author', 'type', 'mood'])->where('mood_id', '=', '5')->get();
+		$happyMedias = Media::with(['author'], ['type'], ['mood'])->where('mood_id', '=', '5')->get();
 		$sadMedias = Media::with(['author', 'type', 'mood'])->where('mood_id', '=', '2')->get();
 		$mehMedias = Media::with(['author', 'type', 'mood'])->where('mood_id', '=', '4')->get();
 		$madMedias = Media::with(['author', 'type', 'mood'])->where('mood_id', '=', '1')->get();

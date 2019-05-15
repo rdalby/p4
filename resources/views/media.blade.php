@@ -6,29 +6,44 @@
 @endsection
 
 @section('head')
+    <link href={{ asset('/css/p4.css') }} rel='stylesheet'>
 @endsection
 
 
 @section('content')
+    <h1 class="w3-xxxlarge w3-text-teal"><b>Happy</b></h1>
+    <hr style="width:50px;border:5px solid teal" class="w3-round">
 
-    <h2>Happy</h2>
     <hr>
     <div class="w3-row-padding">
     @foreach($happyMedias as $happyMedia)
-    <div class='media cf w3-half'>
-        <img class='cover' src='{{ $happyMedia->cover }}' alt='Cover image for media {{ $happyMedia->title }}'>
-        <a href='/media/{{ $happyMedia->id }}'><h3>{{ $happyMedia->title }}</h3></a>
+    <div class='media cf custom-control-inline'>
         <ul>
-            <li>Mood {{ $happyMedia->mood->name }}</li>
-            <li>Type {{ $happyMedia->type->name }}</li>
-            <li>by {{ $happyMedia->author->getFullName() }}</li>
-            <li>Added {{ $happyMedia->created_at->format('m/d/y g:ia') }}</li>
+            <li>
+                <a href='/media/{{ $happyMedia->id }}'><h3>{{ $happyMedia->title }}</h3></a>
+                @if($happyMedia->type->name != 'Music')
+        <img class='cover' src='{{ $happyMedia->cover }}' alt='Cover image for media {{ $happyMedia->title }}'>
+        @endif
+                @if($happyMedia->type->name == 'Music')
+                    <div class='cover'>
+                        <iframe width="560" height="315" src='<?= $happyMedia['cover'] ?>'
+                                frameborder="0"
+                                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                    </div>
+                @endif
+          <p>  Mood {{ $happyMedia->mood->name }}</p>
+<p>Type {{$happyMedia->type->name }}</p>
+                <p> by {{ $happyMedia->author->getFullName() }}</p>
+                <p> Added {{ $happyMedia->created_at->format('m/d/y g:ia') }}</p>
+            </li>
         </ul>
     </div>
     @endforeach
     </div>
 
-    <h2>Meh</h2>
+    <h1 class="w3-xxxlarge w3-text-teal"><b>Meh</b></h1>
+    <hr style="width:50px;border:5px solid teal" class="w3-round">
     <hr>
     @foreach($mehMedias as $mehMedia)
     <div class='media cf'>
@@ -43,7 +58,8 @@
     </div>
     @endforeach
 
-    <h2>Mad</h2>
+    <h1 class="w3-xxxlarge w3-text-teal"><b>Mad</b></h1>
+    <hr style="width:50px;border:5px solid teal" class="w3-round">
     <hr>
     @foreach($madMedias as $madMedia)
     <div class='media cf'>
@@ -58,7 +74,8 @@
     </div>
     @endforeach
 
-    <h2>Excited</h2>
+   <h1 class="w3-xxxlarge w3-text-teal"><b>Excited</b></h1>
+    <hr style="width:50px;border:5px solid teal" class="w3-round">
     <hr>
     @foreach($excitedMedias as $excitedMedia)
     <div class='media cf'>
@@ -73,7 +90,8 @@
     </div>
     @endforeach
 
-    <h2>Sad</h2>
+    <h1 class="w3-xxxlarge w3-text-teal"><b>Sad</b></h1>
+    <hr style="width:50px;border:5px solid teal" class="w3-round">
     <hr>
     @foreach($sadMedias as $sadMedia)
     <div class='media cf'>

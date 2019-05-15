@@ -14,6 +14,19 @@
     body {font-size:16px;}
     .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
     .w3-half img:hover{opacity:1}
+
+
+    .w3-ul ul{
+        list-style-type: inline;
+        padding: 0;
+    }
+
+    .w3-li li{
+        border: 1px solid silver;
+        margin: 0 0 15px 0;
+        padding: 10px;
+        background: silver;
+    }
 </style>
 
 
