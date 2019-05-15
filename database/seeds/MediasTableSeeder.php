@@ -53,7 +53,7 @@ class MediasTableSeeder extends Seeder
 
 
 			$media->save();
-
+			//$media->media()->sync($mediaData[0]);
 			$count--;
 		}
     }

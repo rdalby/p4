@@ -31,6 +31,8 @@ class PlaylistsTableSeeder extends Seeder
 
 			$playlist->save();
 
+			//$playlist->playlist()->sync($playlistData);
+
 			$count--;
 		}
     }
