@@ -5,6 +5,15 @@ return [
 	'nav' => [
 		// URL => Link label
 		'media' => 'Media',
+		'media/search' => 'Search Playlists',
+
+
+	],
+
+
+	'nav1' => [
+		// URL => Link label
+		'media' => 'Media',
 		'media/create' => 'Add media',
 		'media/create/playlist' => 'Create Playlist',
 		'media/search' => 'Search Playlists',

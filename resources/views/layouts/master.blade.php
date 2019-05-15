@@ -40,8 +40,22 @@
     <div class="w3-container">
         <h3 class="w3-padding-64"><a href='/'><img src={{ asset('images/p4-logo-small.jpg') }} id='logo' alt='p4 logo' class='logo'></a></h3>
     </div>
-    <div class="w3-bar-block">
 
+
+        @if (Route::has('login'))
+            <div class="w3-bar-block">
+                @auth
+                    <a href="{{ url('/') }}" class="w3-bar-item w3-button w3-hover-white">Home</a>
+                @else
+                    <a href="{{ route('login') }}" class="w3-bar-item w3-button w3-hover-white">Login</a>
+
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="w3-bar-item w3-button w3-hover-white">Register</a>
+                    @endif
+                @endauth
+            </div>
+        @endif
+            <div class="w3-bar-block">
             @foreach(config('app.nav') as $link => $label)
 
                         <a href='/{{ $link }}' class="w3-bar-item w3-button w3-hover-white">{{ $label }}</a>
@@ -49,18 +63,15 @@
             @endforeach
 
     </div>
+
 </nav>
 
 
 !-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 
-    <!-- Header -->
-    <div class="w3-container" style="margin-top:80px" id="showcase">
-        <h1 class="w3-jumbo"><b>Media</b></h1>
-        <h1 class="w3-xxxlarge w3-text-teal"><b>Showcase</b></h1>
-        <hr style="width:50px;border:5px solid teal" class="w3-round">
-    </div>
+@yield('heading')
+
 
     <section>
     <table>
