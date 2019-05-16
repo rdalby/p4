@@ -22,28 +22,16 @@
                 @yield('formTest')
             </td>
             <td>
-
-
-                @if($mood)
-                    <h1>Your results are below for your current mood:
-                        <em>{{ $mood }}</em></h1>
-                    @if(count($playlistResults) == 0)
-                        No matches found.
-                    @else
-                        <fieldset>
-                            <ul>
-                                @foreach($playlistResults as $mood => $playlist)
-                                    <div class='media'>
-                                        <h3>{{ $mood }}</h3>
-                                        <li class="displayMediaResult">
-                                            {{ $playlist['name'] }}
-                                        </li>
-                                    </div>
-                                @endforeach
-                            </ul>
-                        </fieldset>
-                    @endif
-
+                @if($playlist)
+                    <div>
+                        <h1 class="w3-xxxlarge w3-text-teal"><b>Playlists:</b></h1>
+                        <hr style="width:50px;border:5px solid teal" class="w3-round">
+                        @foreach($playlist as $playlists)
+                            <p><a href='/playlist/{{ $playlists->id }}'>{{$playlists->name}}</p>
+                        @endforeach
+                        <br>
+                        <br>
+                    </div>
                 @endif
 
             </td>

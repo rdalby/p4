@@ -2,21 +2,21 @@
     <form method='POST' action='/media/media-process'>
         @csrf
         <div class='instructions'>
-            * Search by name or mood
+            * Search by playlist name or playlist mood
         </div>
         <fieldset>
             <label> Name
-                <input type='text' name='userName' value='{{ $userName ?? ''  }}'>
-                @include('error', ['fieldName' => 'userName'])
+                <input type='text' name='playlistName' value='{{ $playlistName ?? ''  }}'>
+
             </label><br>
             <label> Mood
                 <select name='mood'>
                     <option value='{{ $mood ?? ''  }}'>{{ $mood ?? ''  }}</option>
-                    <option value='happy'>Happy</option>
-                    <option value='excited'>Excited</option>
-                    <option value='mad'>Mad</option>
-                    <option value='sad'>Sad</option>
-                    <option value='meh'>Meh</option>
+                    <option value='happy'>happy</option>
+                    <option value='excited'>excited</option>
+                    <option value='mad'>mad</option>
+                    <option value='sad'>sad</option>
+                    <option value='meh'>meh</option>
                 </select>
             </label>
         </fieldset>

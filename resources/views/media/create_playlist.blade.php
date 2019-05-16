@@ -13,7 +13,9 @@
 @endsection
 
 @section('content')
-
+    @if(session('alert'))
+        <div class='alert w3-text-red w3-xlarge'>{{ session('alert') }}</div>
+    @endif
 
     <form method='POST' action='/media/create/playlist'>
         <div class='details'>* All Fields Required fields</div>
@@ -26,6 +28,8 @@
                 </td>
                 <td>
                     <input type='text' name='name' id='playlistName' value='{{ old('playlistName') }}'>
+                    @include('error', ['fieldName' => 'name'])
+                    @include('error', ['fieldName'=> 'playlistName'])
                 </td>
             </tr>
             <tr>
@@ -51,6 +55,7 @@
                             <option value='{{ $mood->id }}' {{ (old('mood') == $mood->id) ? 'selected' : '' }}>{{ $mood->name }}</option>
                         @endforeach
                     </select>
+                    @include('error', ['fieldName' => 'mood'])
 
                 </td>
             </tr>

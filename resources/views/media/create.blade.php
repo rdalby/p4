@@ -26,6 +26,7 @@
                 </td>
                 <td>
         <input type='text' name='title' id='title' value='{{ old('title') }}'>
+                    @include('error', ['fieldName' => 'title'])
                 </td>
             </tr>
             <tr>
@@ -39,6 +40,7 @@
                 <option value='{{ $author->id }}' {{ (old('author_id') == $author->id) ? 'selected' : '' }}>{{ $author->getFullName() }}</option>
             @endforeach
         </select>
+                    @include('error', ['fieldName' => 'author'])
                 </td>
             </tr>
             <tr>
@@ -47,6 +49,7 @@
                 </td>
                 <td>
         <input type='text' name='cover' id='cover' value='{{ old('cover', 'http://') }}'>
+                    @include('error', ['fieldName' => 'cover'])
                 </td>
             </tr>
             <tr>
@@ -55,6 +58,7 @@
                 </td>
                 <td>
                     <input type='text' name='url' id='url' value='{{ old('url', 'http://') }}'>
+                    @include('error', ['fieldName' => 'url'])
                 </td>
             </tr>
             <tr>
@@ -67,7 +71,7 @@
                             <option value='{{ $type->id }}' {{ (old('type') == $type->id) ? 'selected' : '' }}>{{ $type->name }}</option>
                         @endforeach
                     </select>
-
+                    @include('error', ['fieldName' => 'type'])
                 </td>
             </tr>
             <tr>
@@ -80,7 +84,7 @@
                                 <option value='{{ $mood->id }}' {{ (old('mood') == $mood->id) ? 'selected' : '' }}>{{ $mood->name }}</option>
                             @endforeach
                         </select>
-
+                    @include('error', ['fieldName' => 'mood'])
                 </td>
             </tr>
 

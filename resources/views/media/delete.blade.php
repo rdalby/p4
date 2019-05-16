@@ -5,24 +5,24 @@
 @endsection
 
 @section('title')
-    Confirm deletion: {{ $book->title }}
+    Confirm deletion: {{ $playlist->name }}
 @endsection
 
 @section('content')
-    <h1>Confirm deletion</h1>
+    <h1 class="w3-xxxlarge w3-text-teal"><b>Confirm Deletion</b></h1>
+    <hr style="width:50px;border:5px solid teal" class="w3-round">
 
-    <p>Are you sure you want to delete <strong>{{ $book->title }}</strong>?</p>
+    <p>Are you sure you want to delete <strong>{{ $playlist->name }}</strong>?</p>
 
-    <img src='{{ $book->cover_url }}' class='cover' alt='Cover image for {{ $book->title }}'>
 
-    <form method='POST' action='/books/{{ $book->id }}'>
+    <form method='POST' action='/playlist/{{ $playlist->id }}'>
         {{ method_field('delete') }}
         {{ csrf_field() }}
         <input type='submit' value='Yes, delete it!' class='btn btn-danger btn-small'>
     </form>
 
     <p class='cancel'>
-        <a href='/books/{{ $book->id }}'>No, I changed my mind.</a>
+        <a href='/playlist/{{ $playlist->id }}'>No, I changed my mind.</a>
     </p>
 
 @endsection

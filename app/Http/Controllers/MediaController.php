@@ -11,6 +11,7 @@ use App\Mood;
 use App\Type;
 use App\User;
 use App\Playlist;
+use App\Media_Playlist;
 
 class MediaController extends Controller
 {
@@ -33,10 +34,10 @@ class MediaController extends Controller
 			'medias' => $media,
 			'moods' => $moods,
 			'happyMedias' => $happyMedias,
-		'sadMedias' => $sadMedias,
-		'mehMedias' => $mehMedias,
-		'madMedias' => $madMedias,
-		'excitedMedias' => $excitedMedias,
+			'sadMedias' => $sadMedias,
+			'mehMedias' => $mehMedias,
+			'madMedias' => $madMedias,
+			'excitedMedias' => $excitedMedias,
 		]);
 	}
 
@@ -97,10 +98,58 @@ class MediaController extends Controller
 		//$password = (new \App\User)->getPassword();
 
 		return view('media.account')->with([
-			'playlist' =>$playlists,
+			'playlist' => $playlists,
 			'name' => $user['name'],
 			'email' => $user['email'],
 			'password' => $user['password']
+		]);
+	}
+
+	public function playlistShow($id)
+	{
+		$playlistName = Playlist::select('name')->where('id', $id)->get();
+		$medias = Media::with('playlist')->get();
+		$medias1 = [];
+		foreach ($medias as $media) {
+			if ($media->playlist != null) {
+
+				foreach ($media->playlist as $playlist) {
+					if ($playlist->id == $id) {
+						$medias1[] = $media;
+					}
+
+				}
+			}
+		}
+
+		return view('media.show', ['medias' => $medias1, 'playlist' => $playlistName]);
+
+	}
+
+
+	public function playlistDelete($id)
+	{
+		$playlist = Playlist::find($id);
+
+		if (!$playlist) {
+			return redirect('/account')->with(['alert' => 'playlist not found']);
+		}
+
+		return view('media.delete')->with([
+			'playlist' => $playlist,
+		]);
+	}
+
+	public function playlistFinalDelete($id)
+	{
+		$playlist = Playlist::find($id);
+
+		$playlist->media()->detach();
+
+		$playlist->delete();
+
+		return redirect('/account')->with([
+			'alert' => '“' . $playlist->name . '” was removed.'
 		]);
 	}
 
@@ -113,11 +162,14 @@ class MediaController extends Controller
 
 		$playlistName = $request->session()->get('playlistName', '');
 		$mood = $request->session()->get('mood', '');
-
-		$playlistResults = $request->session()->get('playlistResults', null);
+		$moodId = Mood::select('id')->where('name', $mood)->get();
+		$playlistResults = [];//$request->session()->get('playlistResults', null);
+		$data = [];
 		# Work that was previously happening in the routes file is now happening here
 		return view('media.search')->with([
-			'playlistName' => $playlistName,
+			'playlist' => $playlistName,
+			'moodId' => $moodId,
+			'data' => $data,
 			'mood' => $mood,
 			'playlistResults' => $playlistResults,
 		]);
@@ -134,94 +186,61 @@ class MediaController extends Controller
 			//'userName' => 'required'
 		]);
 
-		//This array will be used for storing any results
-		$playlistResults = [];
-
 		//each perspective input criteria is set aside as a variable
-		$playlistName = $request->input('playlistName', null);
 		$mood = $request->input('mood', null);
 
+		$moodIds = Mood::where('name', $mood)->pluck('id');
+		$playlistName = $request->input('playlistName', null);
+
+		if ($playlistName != "") {
+			$playlistName = Playlist::select('name', 'id')->where('name', $playlistName)->get();
+
+		} elseif ($mood) {
+			$playlistName = Playlist::select('name', 'id')->where('mood_id', $moodIds)->get();
+		}
 
 
-		# must have mood selected to even try to find anything
-	#	if ($mood) {
-	#		if ($bookCheck) {
-	#			$mediaResults = self::mediaDecode('book', $mood, $mediaResults);
-	#		}
-	#		if ($comicCheck) {
-	#			$mediaResults = self::mediaDecode('comic', $mood, $mediaResults);
-	#		}
-	#		if ($videoCheck) {
-	#			$mediaResults = self::mediaDecode('video', $mood, $mediaResults);
-	#		}
-	#		if ($musicCheck) {
-	#			$mediaResults = self::mediaDecode('music', $mood, $mediaResults);
-	#		}
-	#	}
+		return view('media.search', ['playlist' => $playlistName]);
+		/*
 
-		$playlist = Playlist::first();
-		$playlistNames = $playlist->name;
+				//each perspective input criteria is set aside as a variable
+				//$playlistName = $request->input('playlistName', null);
+				$mood = $request->input('mood', null);
+				$user = $request->user();
+				$playlistName = $request->input('playlistName', null);
 
+				$moodIds = Mood::find($mood);
+
+				$playlist = Playlist::with('mood')->find($moodIds);
+				//$data = Playlist::where('mood_id', $moodIds)->pluck('name');
+				$data = $user->playlist()->orderBy('name')->get();
+				//$moodId = $moodIds->id;
+
+					$playlistResults = Playlist::where('mood_id', $moodIds)->get();
 
 
-		# Redirect back to the media page with the results if any
 
-		return redirect('/media/search')->with([
-			'playlistName' => $playlistName,
-			'mood' => $mood,
-			'playlistResults' => $playlistResults
-		]);
+				# Redirect back to the media page with the results if any
+
+				return view('media.search')->with([
+					'playlist' => $playlistName,
+					'data' => $data,
+					'moodId' => $moodIds,
+					'mood' => $mood,
+					'playlistResults' => $playlist
+				]);*/
 	}
 
-	/**
-	 * @param String $mediaType
-	 * @param String $userMood
-	 * @param array $mediaResults
-	 * @return array
-	 */
-	public function mediaDecode(String $mediaType, String $userMood, Array $mediaResults)
+
+	public function createMedia(Request $request)
 	{
+		$request->validate([
+			'title' => 'required',
+			'author_id' => 'required',
+			'mood' => 'required',
+			'type' => 'required'
+		]);
 
-		switch ($mediaType) {
-			case 'book':
-				$path = '/Books.json';
-				break;
-			case 'video':
-				$path = '/Videos.json';
-				break;
-			case 'comic':
-				$path = '/Comics.json';
-				break;
-			case 'music':
-				$path = '/Music.json';
-				break;
-			default:
-				$path = '/Comics.json';
-				break;
-		}
-
-		// It will open each json file per media type
-		// database_path() is a Laravel helper to get the path to the database folder
-		// See https://laravel.com/docs/helpers for other path related helpers
-		$mediaData = file_get_contents(database_path($path));
-
-		// Decode the book JSON data into an array
-		$medias = json_decode($mediaData, true);
-		// Loop through all the media data from the json files for matches
-		foreach ($medias as $mood => $media) {
-			$match = $mood == $userMood;
-
-
-			# If it was a match, add it to our results
-			if ($match) {
-				$mediaResults[$mediaType] = $media;
-			}
-		}
-		return $mediaResults;
-	}
-
-
-	public function createMedia(Request $request){
 		$author = $request->input('author_id');
 		$mood = $request->input('mood');
 		$type = $request->input('type');
@@ -240,11 +259,16 @@ class MediaController extends Controller
 		]);
 	}
 
-	public function createPlaylist(Request $request){
+	public function createPlaylist(Request $request)
+	{
+		$request->validate([
+			'name' => 'required',
+			'mood' => 'required'
+		]);
 		//$user =Auth::user();
 		$mood = $request->input('mood');
-		$title= $request->input ('title');
-$title['title'] = $title;
+		$title = $request->input('title');
+		$title['title'] = $title;
 
 		$playlist = new Playlist();
 		$playlist->name = $request->input('name');
@@ -252,7 +276,7 @@ $title['title'] = $title;
 		$playlist->user_id = $request->user()->id;
 		$playlist->save();
 
-			$playlist->media()->sync($request->input('title'));
+		$playlist->media()->sync($request->input('title'));
 
 		return redirect('/media/create/playlist')->with([
 			'alert' => 'Your playlist was created'

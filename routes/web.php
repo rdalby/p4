@@ -13,13 +13,15 @@
 
 
 //This actually calls the method to process the form
-Route::post('/media/search/media-process', 'MediaController@mediaProcess');
-Route::get('/media/search/media-process', 'MediaController@mediaProcess');
 
 Route::post('/media/media-process', 'MediaController@mediaProcess');
-Route::get('/media/media-process', 'MediaController@mediaProcess');
-
+Route::view('/media/search', 'media.search');
 Route::get('/media/search', 'MediaController@mediaRequest');
+Route::post('/media/media-process', 'MediaController@mediaProcess');
+
+
+//Route::get('/media/search', 'MediaController@mediaRequest');
+Route::post('/media/search', 'MediaController@mediaRequest');
 
 //This calls the media controller and displays the results page
 //Route::view('/media', 'media');
@@ -29,6 +31,12 @@ Route::view('/media/create/logoff', 'media');
 Route::get('/media', 'MediaController@index');
 
 Route::get('/account', 'MediaController@accounts');
+
+Route::get('/playlist/{id}','MediaController@playlistShow');
+
+Route::get('/playlist/{id}/delete', 'MediaController@playlistDelete' );
+
+Route::delete('/playlist/{id}','MediaController@playlistFinalDelete');
 
 
 

@@ -28,7 +28,7 @@ Media
         @foreach($happyMedias as $happyMedia)
             <div class="w3-half div-test">
 
-                <a href='/media/{{ $happyMedia->id }}'><h3>{{ $happyMedia->title }}</h3></a>
+                <h3>{{ $happyMedia->title }}</h3></a>
                 @if($happyMedia->type->name != 'Music')
                     <img class='cover' src='{{ $happyMedia->cover }}'
                          alt='Cover image for media {{ $happyMedia->title }}'>
@@ -57,7 +57,7 @@ Media
         @foreach($mehMedias as $mehMedia)
             <div class="w3-half div-test">
 
-                <a href='/media/{{ $mehMedia->id }}'><h3>{{ $mehMedia->title }}</h3></a>
+                <h3>{{ $mehMedia->title }}</h3></a>
                 @if($mehMedia->type->name != 'Music')
                     <img class='cover' src='{{ $mehMedia->cover }}'
                          alt='Cover image for media {{ $mehMedia->title }}'>
@@ -86,7 +86,7 @@ Media
         @foreach($madMedias as $madMedia)
             <div class="w3-half div-test">
 
-                <a href='/media/{{ $madMedia->id }}'><h3>{{ $madMedia->title }}</h3></a>
+                <h3>{{ $madMedia->title }}</h3></a>
                 @if($madMedia->type->name != 'Music')
                     <img class='cover' src='{{ $madMedia->cover }}'
                          alt='Cover image for media {{ $madMedia->title }}'>
@@ -115,7 +115,7 @@ Media
         @foreach($excitedMedias as $excitedMedia)
             <div class="w3-half div-test">
 
-                <a href='/media/{{ $excitedMedia->id }}'><h3>{{ $excitedMedia->title }}</h3></a>
+                <h3>{{ $excitedMedia->title }}</h3></a>
                 @if($excitedMedia->type->name != 'Music')
                     <img class='cover' src='{{ $excitedMedia->cover }}'
                          alt='Cover image for media {{ $excitedMedia->title }}'>
@@ -144,7 +144,7 @@ Media
         @foreach($sadMedias as $sadMedia)
             <div class="w3-half div-test">
 
-                <a href='/media/{{ $sadMedia->id }}'><h3>{{ $sadMedia->title }}</h3></a>
+                <h3>{{ $sadMedia->title }}</h3></a>
                 @if($sadMedia->type->name != 'Music')
                     <img class='cover' src='{{ $sadMedia->cover }}'
                          alt='Cover image for media {{ $sadMedia->title }}'>

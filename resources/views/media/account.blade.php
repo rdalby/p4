@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-Account
+    Account
 @endsection
 
 @section('head')
@@ -18,18 +18,22 @@ Account
 
 @section('content')
 
-
     <div class='user'>
         <p>Name: {{ $name }}</p>
         <p>email: {{ $email }}</p>
+        <br>
+        <br>
 
-        <p>password: {{ $password }}</p>
     </div>
 
     <div>
-        <p>Playlists:</p>
+        <h1 class="w3-xxxlarge w3-text-teal"><b>Playlists:</b></h1>
+        <hr style="width:50px;border:5px solid teal" class="w3-round">
         @foreach($playlist as $playlists)
-        <p>{{$playlists->name}}</p>
-            @endforeach
+            <p><a href='/playlist/{{ $playlists->id }}'>{{$playlists->name}}</p>
+            <li><a href='/playlist/{{ $playlists->id }}/delete'><i class="fas fa-trash"></i> Delete</a>
+                @endforeach
+
+                <br>
     </div>
 @endsection

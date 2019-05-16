@@ -9,25 +9,6 @@
     @yield('head')
 </head>
 
-<style>
-    body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
-    body {font-size:16px;}
-    .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
-    .w3-half img:hover{opacity:1}
-
-
-    .w3-ul ul{
-        list-style-type: inline;
-        padding: 0;
-    }
-
-    .w3-li li{
-        border: 1px solid silver;
-        margin: 0 0 15px 0;
-        padding: 10px;
-        background: silver;
-    }
-</style>
 
 
 <body>
@@ -36,7 +17,7 @@
 @endif
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-teal w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
-    <a href="javascript:void(0)" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+
     <div class="w3-container">
         <h3 class="w3-padding-64"><a href='/'><img src={{ asset('images/p4-logo-small.jpg') }} id='logo' alt='p4 logo' class='logo'></a></h3>
     </div>
