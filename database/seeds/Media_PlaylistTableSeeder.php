@@ -14,30 +14,7 @@ class Media_PlaylistTableSeeder extends Seeder
      */
     public function run()
     {
-		/*# Array of author data to add
-		$media_playlists = [
-			['1', '1'],
-			['1', '2' ],
-			['1', '3'],
-			['1', '4'],
-			['2', '3']
-		];
-		$count = count($media_playlists);
 
-		# Loop through each author, adding them to the database
-		foreach ($media_playlists as $media_playlistData) {
-			$media_playlist = new Media_Playlist();
-
-			$media_playlist->created_at = Carbon\Carbon::now()->subDays($count)->toDateTimeString();
-			$media_playlist->updated_at = Carbon\Carbon::now()->subDays($count)->toDateTimeString();
-			$media_playlist->playlist_id = $media_playlistData[0];
-			$media_playlist->media_id = $media_playlistData[1];
-
-
-			$media_playlist->save();
-
-			$count--;
-		} */
 
 		$faker = Faker::create();
 
