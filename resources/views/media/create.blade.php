@@ -22,33 +22,33 @@
         <table>
             <tr>
                 <td>
-        <label for='title'>Title</label>
+                    <label for='title'>Title</label>
                 </td>
                 <td>
-        <input type='text' name='title' id='title' value='{{ old('title') }}'>
+                    <input type='text' name='title' id='title' value='{{ old('title') }}'>
                     @include('error', ['fieldName' => 'title'])
                 </td>
             </tr>
             <tr>
                 <td>
-        <label for='author_id'>Creator</label>
+                    <label for='author_id'>Creator</label>
                 </td>
                 <td>
-                <select name='author_id'>
-            <option value=''>Choose one...</option>
-            @foreach($authors as $author)
-                <option value='{{ $author->id }}' {{ (old('author_id') == $author->id) ? 'selected' : '' }}>{{ $author->getFullName() }}</option>
-            @endforeach
-        </select>
+                    <select name='author_id'>
+                        <option value=''>Choose one...</option>
+                        @foreach($authors as $author)
+                            <option value='{{ $author->id }}' {{ (old('author_id') == $author->id) ? 'selected' : '' }}>{{ $author->getFullName() }}</option>
+                        @endforeach
+                    </select>
                     @include('error', ['fieldName' => 'author'])
                 </td>
             </tr>
             <tr>
                 <td>
-        <label for='cover_url'>Cover</label>
+                    <label for='cover_url'>Cover</label>
                 </td>
                 <td>
-        <input type='text' name='cover' id='cover' value='{{ old('cover', 'http://') }}'>
+                    <input type='text' name='cover' id='cover' value='{{ old('cover', 'http://') }}'>
                     @include('error', ['fieldName' => 'cover'])
                 </td>
             </tr>
@@ -76,20 +76,20 @@
             </tr>
             <tr>
                 <td>
-            <label>Mood</label>
+                    <label>Mood</label>
                 </td>
                 <td>
-                        <select name="mood">
-                            @foreach($moods as $mood)
-                                <option value='{{ $mood->id }}' {{ (old('mood') == $mood->id) ? 'selected' : '' }}>{{ $mood->name }}</option>
-                            @endforeach
-                        </select>
+                    <select name="mood">
+                        @foreach($moods as $mood)
+                            <option value='{{ $mood->id }}' {{ (old('mood') == $mood->id) ? 'selected' : '' }}>{{ $mood->name }}</option>
+                        @endforeach
+                    </select>
                     @include('error', ['fieldName' => 'mood'])
                 </td>
             </tr>
 
-                </table>
-<br>
+        </table>
+        <br>
         <input type='submit' class='btn btn-primary' value='Add media'>
     </form>
 

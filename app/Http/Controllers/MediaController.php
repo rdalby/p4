@@ -193,7 +193,7 @@ class MediaController extends Controller
 		$playlistName = $request->input('playlistName', null);
 
 		if ($playlistName != "") {
-			$playlistName = Playlist::select('name', 'id')->where('name', $playlistName)->get();
+			$playlistName = Playlist::select('name', 'id')->where('name', 'LIKE', $playlistName)->get();
 
 		} elseif ($mood) {
 			$playlistName = Playlist::select('name', 'id')->where('mood_id', $moodIds)->get();
@@ -201,34 +201,7 @@ class MediaController extends Controller
 
 
 		return view('media.search', ['playlist' => $playlistName]);
-		/*
 
-				//each perspective input criteria is set aside as a variable
-				//$playlistName = $request->input('playlistName', null);
-				$mood = $request->input('mood', null);
-				$user = $request->user();
-				$playlistName = $request->input('playlistName', null);
-
-				$moodIds = Mood::find($mood);
-
-				$playlist = Playlist::with('mood')->find($moodIds);
-				//$data = Playlist::where('mood_id', $moodIds)->pluck('name');
-				$data = $user->playlist()->orderBy('name')->get();
-				//$moodId = $moodIds->id;
-
-					$playlistResults = Playlist::where('mood_id', $moodIds)->get();
-
-
-
-				# Redirect back to the media page with the results if any
-
-				return view('media.search')->with([
-					'playlist' => $playlistName,
-					'data' => $data,
-					'moodId' => $moodIds,
-					'mood' => $mood,
-					'playlistResults' => $playlist
-				]);*/
 	}
 
 

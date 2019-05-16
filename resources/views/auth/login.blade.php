@@ -17,40 +17,40 @@
     <br>
 
     <form method='POST' action='{{ route('login') }}'>
-<table>
-        {{ csrf_field() }}
-<tr>
-    <td>
-        <label for='email'>E-Mail Address</label>
-    </td>
-    <td>
-    <input id='email' type='email' name='email' value='{{ old('email') }}' required autofocus>
-    </td>
-</tr>
-    <tr>
-        <td>
-        <label for='password'>Password</label>
-        </td>
-        <td>
-        <input id='password' type='password' name='password' required>
-        </td>
-    <tr>
-    </tr>
-    <td>
-        <label>
-             Remember Me
-        </label>
-    </td>
-    <td><input type='checkbox' name='remember' {{ old('remember') ? 'checked' : '' }}>
-        </td>
-    </td>
-    <tr>
-    </tr>
+        <table>
+            {{ csrf_field() }}
+            <tr>
+                <td>
+                    <label for='email'>E-Mail Address</label>
+                </td>
+                <td>
+                    <input id='email' type='email' name='email' value='{{ old('email') }}' required autofocus>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for='password'>Password</label>
+                </td>
+                <td>
+                    <input id='password' type='password' name='password' required>
+                </td>
+            <tr>
+            </tr>
+            <td>
+                <label>
+                    Remember Me
+                </label>
+            </td>
+            <td><input type='checkbox' name='remember' {{ old('remember') ? 'checked' : '' }}>
+            </td>
+            </td>
+            <tr>
+            </tr>
         </table>
         <br>
         <button type='submit' class='btn btn-primary'>Login</button>
         <br>
-<br>
+        <br>
         <a class='btn btn-link' href='{{ route('password.request') }}'>Forgot Your Password?</a>
 
     </form>

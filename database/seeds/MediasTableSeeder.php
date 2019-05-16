@@ -5,17 +5,17 @@ use App\Media;
 
 class MediasTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
 		# Array of author data to add
 		$medias = [
-			['Harry Potter and the Sorcerers Stone', '1', '1', 'https://images-na.ssl-images-amazon.com/images/I/51HSkTKlauL._SX346_BO1,204,203,200_.jpg','https://www.amazon.com/Harry-Potter-Sorcerers-Stone-Rowling/dp/059035342X/ref=sr_1_1?crid=1NJ4FZ7ICZ7SY&keywords=harry+potter+scorcerer%27s+stone+book&qid=1551301343&s=gateway&sprefix=harry+potter+scor%2Caps%2C857&sr=8-1', '2'],
-			['Let’s Explore Diabetes with Owls', '2', '2', 'https://images-na.ssl-images-amazon.com/images/I/41boA-KjlwL._SX331_BO1,204,203,200_.jpg', 'https://www.amazon.com/gp/product/0316154709?imprToken=Jc0OIbACcb5QH9DhXVlQFw&slotNum=1&ie=UTF8&camp=1789&creativeASIN=0316154709&linkCode=xm2&tag=bustle621-20', '2' ],
+			['Harry Potter and the Sorcerers Stone', '1', '1', 'https://images-na.ssl-images-amazon.com/images/I/51HSkTKlauL._SX346_BO1,204,203,200_.jpg', 'https://www.amazon.com/Harry-Potter-Sorcerers-Stone-Rowling/dp/059035342X/ref=sr_1_1?crid=1NJ4FZ7ICZ7SY&keywords=harry+potter+scorcerer%27s+stone+book&qid=1551301343&s=gateway&sprefix=harry+potter+scor%2Caps%2C857&sr=8-1', '2'],
+			['Let’s Explore Diabetes with Owls', '2', '2', 'https://images-na.ssl-images-amazon.com/images/I/41boA-KjlwL._SX331_BO1,204,203,200_.jpg', 'https://www.amazon.com/gp/product/0316154709?imprToken=Jc0OIbACcb5QH9DhXVlQFw&slotNum=1&ie=UTF8&camp=1789&creativeASIN=0316154709&linkCode=xm2&tag=bustle621-20', '2'],
 			['Where’d You Go, Bernadette', '3', '3', 'https://images-na.ssl-images-amazon.com/images/I/41jZQywZjHL._SY346_.jpg', 'https://www.amazon.com/Whered-You-Go-Bernadette-Novel-ebook/dp/B006L8942U?_bbid=64666&tag=unrecognizedsite-20', '2'],
 			['The Perks of Being a Wallflower', '4', '4', 'https://images-na.ssl-images-amazon.com/images/I/41pwDQ15SrL._SX353_BO1,204,203,200_.jpg', 'https://www.amazon.com/Perks-Being-Wallflower-Stephen-Chbosky/dp/0671027344?creativeASIN=0671027344&linkCode=w50&tag=self01b-20&imprToken=sBgJst-tbW44J7J9TJD9IQ&slotNum=3', '2'],
 			['Me Talk Pretty One Day', '2', '5', 'https://images-na.ssl-images-amazon.com/images/I/41vIEie4W8L._SX331_BO1,204,203,200_.jpg', 'https://www.amazon.com/Me-Talk-Pretty-One-Day/dp/0316776963/ref=sr_1_3?creativeASIN=0316776963&linkCode=w50&tag=self01b-20&imprToken=sBgJst-tbW44J7J9TJD9IQ&slotNum=7&s=books&ie=UTF8&qid=1516295057&sr=1-3&keywords=me%20talk%20pretty%20one%20day', '2'],
@@ -56,5 +56,5 @@ class MediasTableSeeder extends Seeder
 			//$media->media()->sync($mediaData[0]);
 			$count--;
 		}
-    }
+	}
 }

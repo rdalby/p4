@@ -1,9 +1,8 @@
-.logo{
+.logo {
     border: 5px solid white;
-    height:150px;
+    height: 150px;
 
 }
-
 
 
 /* box sizing: http://www.paulirish.com/2012/box-sizing-border-box-ftw */
@@ -13,18 +12,32 @@
     box-sizing: border-box;
 }
 
-body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
-body {font-size:16px;}
-.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
-.w3-half img:hover{opacity:1}
+body, h1, h2, h3, h4, h5 {
+    font-family: "Poppins", sans-serif
+}
+
+body {
+    font-size: 16px;
+}
+
+.w3-half img {
+    margin-bottom: -6px;
+    margin-top: 16px;
+    opacity: 0.8;
+    cursor: pointer
+}
+
+.w3-half img:hover {
+    opacity: 1
+}
 
 
-.w3-ul ul{
+.w3-ul ul {
     list-style-type: inline;
     padding: 0;
 }
 
-.w3-li li{
+.w3-li li {
     border: 1px solid silver;
     margin: 0 0 15px 0;
     padding: 10px;
@@ -34,7 +47,7 @@ body {font-size:16px;}
 img {
     display: block;
     alignment: left;
-   max-height: 250px;
+    max-height: 250px;
     max-width: 400px;
 }
 
@@ -134,13 +147,13 @@ input[name=userName] {
 
 ul {
     border-right: 1px solid #ffffff;
-    width:2600px;
-    display:inline;
+    width: 2600px;
+    display: inline;
 }
 
 li {
     border: 1px solid silver;
-    width:200px;
+    width: 200px;
     display: inline;
     list-style-type: none;
 }

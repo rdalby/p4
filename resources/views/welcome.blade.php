@@ -10,6 +10,7 @@
 
 
 @section('content')
-<p>Hello please login to add media, create/save custom playlists. Otherwise you are free to browse user made playlists and media sorted by mood</p>
+    <p>Hello please login to add media, create/save custom playlists. Otherwise you are free to browse user made
+        playlists and media sorted by mood</p>
 
 @endsection

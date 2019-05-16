@@ -6,28 +6,28 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateTypesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('types', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('types', function (Blueprint $table) {
+			$table->bigIncrements('id');
+			$table->timestamps();
 
-				$table->string('name');
-        });
-    }
+			$table->string('name');
+		});
+	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('types');
-    }
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::dropIfExists('types');
+	}
 }

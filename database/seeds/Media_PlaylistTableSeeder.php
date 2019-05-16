@@ -7,21 +7,21 @@ Use Faker\Factory as Faker;
 
 class Media_PlaylistTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
 
 
-	/*	$faker = Faker::create();
+		$faker = Faker::create();
 
 		$playlist_ids = Playlist::pluck('id')->all();
 		$media_ids = Media::pluck('id')->all();
 
-		for($i=1; $i <= 30; $i++) {
+		for ($i = 1; $i <= 30; $i++) {
 
 			DB::table('media_playlist')->insert([
 				'playlist_id' => $faker->randomElement($playlist_ids),
@@ -29,6 +29,6 @@ class Media_PlaylistTableSeeder extends Seeder
 			]);
 
 
-		} */
-    }
+		}
+	}
 }

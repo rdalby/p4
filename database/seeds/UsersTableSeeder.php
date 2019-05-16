@@ -5,13 +5,13 @@ use App\User;
 
 class UsersTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
 
 		$user = User::updateOrCreate(
 			['email' => 'jill@harvard.edu', 'name' => 'Jill Harvard'],
@@ -23,5 +23,5 @@ class UsersTableSeeder extends Seeder
 			['password' => Hash::make('helloworld')
 			]);
 
-    }
+	}
 }

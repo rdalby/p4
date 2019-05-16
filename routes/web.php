@@ -20,24 +20,21 @@ Route::get('/media/search', 'MediaController@mediaRequest');
 Route::post('/media/media-process', 'MediaController@mediaProcess');
 
 
-//Route::get('/media/search', 'MediaController@mediaRequest');
 Route::post('/media/search', 'MediaController@mediaRequest');
 
 //This calls the media controller and displays the results page
-//Route::view('/media', 'media');
-//Route::get('/media/create/playlist', 'media');
+
 Route::view('/media/create/logoff', 'media');
 
 Route::get('/media', 'MediaController@index');
 
 Route::get('/account', 'MediaController@accounts');
 
-Route::get('/playlist/{id}','MediaController@playlistShow');
+Route::get('/playlist/{id}', 'MediaController@playlistShow');
 
-Route::get('/playlist/{id}/delete', 'MediaController@playlistDelete' );
+Route::get('/playlist/{id}/delete', 'MediaController@playlistDelete');
 
-Route::delete('/playlist/{id}','MediaController@playlistFinalDelete');
-
+Route::delete('/playlist/{id}', 'MediaController@playlistFinalDelete');
 
 
 Route::get('/media/create', 'MediaController@create');
@@ -47,16 +44,11 @@ Route::get('/media/create/playlist', 'MediaController@createPlaylistStart');
 Route::post('/media/create/playlist', 'MediaController@createPlaylist');
 
 
-
-
-
 //This view route will return the welcome view
 Route::view('/', 'welcome');
 
-//Route::get('/', function () {
-//	return view('welcome');
-//});
 
+/*
 Route::get('/show-login-status', function () {
 	$user = Auth::user();
 
@@ -68,7 +60,6 @@ Route::get('/show-login-status', function () {
 
 	return;
 });
-
 
 
 Route::get('/debug', function () {
@@ -84,17 +75,18 @@ Route::get('/debug', function () {
 	debugging, comment it back out so you don't accidentally leave it
 	running on your production server, making your credentials public.
 	*/
-	#$debug['MySQL connection config'] = config('database.connections.mysql');
+#$debug['MySQL connection config'] = config('database.connections.mysql');
+/*
+try {
+	$databases = DB::select('SHOW DATABASES;');
+	$debug['Database connection test'] = 'PASSED';
+	$debug['Databases'] = array_column($databases, 'Database');
+} catch (Exception $e) {
+	$debug['Database connection test'] = 'FAILED: ' . $e->getMessage();
+}
 
-	try {
-		$databases = DB::select('SHOW DATABASES;');
-		$debug['Database connection test'] = 'PASSED';
-		$debug['Databases'] = array_column($databases, 'Database');
-	} catch (Exception $e) {
-		$debug['Database connection test'] = 'FAILED: '.$e->getMessage();
-	}
-
-	dump($debug);
+dump($debug);
 });
+*/
 Auth::routes();
 

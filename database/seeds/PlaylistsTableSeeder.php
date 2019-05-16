@@ -2,19 +2,20 @@
 
 use Illuminate\Database\Seeder;
 Use App\Playlist;
+
 class PlaylistsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
 		# Array of author data to add
 		$playlists = [
 			['1', '1', 'test'],
-			['1', '2', 'test2' ]
+			['1', '2', 'test2']
 		];
 		$count = count($playlists);
 
@@ -35,5 +36,5 @@ class PlaylistsTableSeeder extends Seeder
 
 			$count--;
 		}
-    }
+	}
 }

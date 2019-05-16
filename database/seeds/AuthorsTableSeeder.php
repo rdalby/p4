@@ -5,20 +5,20 @@ use App\Author;
 
 class AuthorsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
 		# Array of author data to add
 		$authors = [
 			['J.K.', 'Rowling'],
-			['David','Sedaris'],
-			['Maria','Semple'],
-			['Stephen','Chbosky'],
-			['Marvin',''],
+			['David', 'Sedaris'],
+			['Maria', 'Semple'],
+			['Stephen', 'Chbosky'],
+			['Marvin', ''],
 			['Jerry Scott and', 'Jim Borgman'],
 			['PHD', 'Comic'],
 			['Charles', 'Schulz'],
@@ -46,5 +46,5 @@ class AuthorsTableSeeder extends Seeder
 
 			$count--;
 		}
-    }
+	}
 }

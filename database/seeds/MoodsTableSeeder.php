@@ -5,17 +5,17 @@ use App\Mood;
 
 class MoodsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
 		# Array of author data to add
 		$moods = [
 			['mad'],
-			['sad' ],
+			['sad'],
 			['excited'],
 			['meh'],
 			['happy']
@@ -35,5 +35,5 @@ class MoodsTableSeeder extends Seeder
 
 			$count--;
 		}
-    }
+	}
 }

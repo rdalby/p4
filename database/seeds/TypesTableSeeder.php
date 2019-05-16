@@ -5,17 +5,17 @@ use App\Type;
 
 class TypesTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
 		# Array of author data to add
 		$types = [
 			['Comic'],
-			['Book' ],
+			['Book'],
 			['Music'],
 			['Video']
 		];
@@ -34,5 +34,5 @@ class TypesTableSeeder extends Seeder
 
 			$count--;
 		}
-    }
+	}
 }
