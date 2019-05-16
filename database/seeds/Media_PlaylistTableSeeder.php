@@ -16,7 +16,7 @@ class Media_PlaylistTableSeeder extends Seeder
     {
 
 
-		$faker = Faker::create();
+	/*	$faker = Faker::create();
 
 		$playlist_ids = Playlist::pluck('id')->all();
 		$media_ids = Media::pluck('id')->all();
@@ -29,6 +29,6 @@ class Media_PlaylistTableSeeder extends Seeder
 			]);
 
 
-		}
+		} */
     }
 }
